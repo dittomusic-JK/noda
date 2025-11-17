@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Page {
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  title            String
+  content          String   @db.Text
+  meta_description String?
+  og_image_url     String?
+  canonical_url    String?
+  published        Boolean  @default(false)
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+  created_by       String?
+  updated_by       String?
+
+  @@index([slug])
+  @@index([published])
+  @@map("pages")
+}
+
+model Post {
+  id               String    @id @default(cuid())
+  slug             String    @unique
+  title            String
+  excerpt          String?
+  content          String    @db.Text
+  author           String
+  published_at     DateTime?
+  meta_description String?
+  og_image_url     String?
+  tags             String[]
+  published        Boolean   @default(false)
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+
+  @@index([slug])
+  @@index([published])
+  @@index([published_at])
+  @@map("posts")
+}
+
+model UseCase {
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  title            String
+  badge            String   // Category badge (e.g., "Swarm Intelligence")
+  challenge        String   @db.Text
+  solution         String   @db.Text
+  benefits         Json     // Array of {title, description} objects
+  features         String[] // Array of feature strings
+  stats            Json     // Array of {value, label} objects
+  seo_keywords     String[]
+  meta_description String
+  hero_image       String?
+  hero_subtitle    String?  // Subtitle in hero section
+  cta_label        String   @default("Book a Demo")
+  cta_subtitle     String?  // Subtitle in CTA section
+  use_case_param   String?  // Parameter for demo form
+  published        Boolean  @default(false)
+  order            Int      @default(0)
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+
+  @@index([slug])
+  @@index([published])
+  @@index([order])
+  @@map("use_cases")
+}
+
+model ContactSubmission {
+  id                String   @id @default(cuid())
+  name              String
+  email             String
+  company           String?
+  message           String   @db.Text
+  source            String? // UTM source
+  synced_to_hubspot Boolean  @default(false)
+  hubspot_id        String?
+  created_at        DateTime @default(now())
+
+  @@index([email])
+  @@index([created_at])
+  @@map("contact_submissions")
+}
+
+model CaseStudy {
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  title            String
+  client           String
+  industry         String
+  excerpt          String   @db.Text
+  challenge        String   @db.Text
+  solution         String   @db.Text
+  results          String   @db.Text
+  hero_image       String?
+  logo_image       String?
+  tags             String[]
+  metrics          Json?    // Store key metrics as JSON
+  meta_description String?
+  published        Boolean  @default(false)
+  featured         Boolean  @default(false)
+  published_at     DateTime?
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+  created_by       String?
+
+  @@index([slug])
+  @@index([published])
+  @@index([featured])
+  @@index([published_at])
+  @@map("case_studies")
+}
+
+model AdminUser {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  password_hash String
+  name          String
+  role          String   @default("admin") // admin, editor, viewer
+  created_at    DateTime @default(now())
+  last_login    DateTime?
+
+  @@index([email])
+  @@map("admin_users")
+}
