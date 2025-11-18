@@ -25,7 +25,6 @@ interface UseCaseForm {
   meta_description: string
   hero_image: string
   cta_label: string
-  pdf_download_url: string
   published: boolean
   order: number
 }
@@ -62,7 +61,6 @@ export default function EditUseCasePage({ params }: { params: Promise<{ id: stri
         meta_description: data.meta_description,
         hero_image: data.hero_image,
         cta_label: data.cta_label || 'Book a Demo',
-        pdf_download_url: data.pdf_download_url || '',
         published: data.published,
         order: data.order || 0,
       })
@@ -211,12 +209,6 @@ export default function EditUseCasePage({ params }: { params: Promise<{ id: stri
             />
           </FormField>
 
-          <FormField label="PDF Download URL" description="Optional whitepaper or case study PDF">
-            <TextInput
-              value={formData.pdf_download_url}
-              onChange={(pdf_download_url) => setFormData(prev => prev ? { ...prev, pdf_download_url } : null)}
-            />
-          </FormField>
         </div>
 
         {/* Content */}

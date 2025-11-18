@@ -30,7 +30,6 @@ export default function NewUseCasePage() {
     meta_description: '',
     hero_image: '',
     cta_label: 'Book a Demo',
-    pdf_download_url: '',
     published: false,
     order: 0,
   })
@@ -143,13 +142,6 @@ export default function NewUseCasePage() {
             />
           </FormField>
 
-          <FormField label="PDF Download URL" description="Optional whitepaper or case study PDF">
-            <TextInput
-              value={formData.pdf_download_url}
-              onChange={(pdf_download_url) => setFormData(prev => ({ ...prev, pdf_download_url }))}
-              placeholder="https://example.com/whitepaper.pdf"
-            />
-          </FormField>
         </div>
 
         {/* Content */}

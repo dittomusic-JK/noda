@@ -49,7 +49,6 @@ export async function PUT(
       meta_description, 
       hero_image,
       cta_label,
-      pdf_download_url,
       published,
       order 
     } = body
@@ -92,7 +91,6 @@ export async function PUT(
         meta_description,
         hero_image,
         cta_label: cta_label || 'Book a Demo',
-        pdf_download_url: pdf_download_url || null,
         published: published || false,
         order: order || 0,
       },
