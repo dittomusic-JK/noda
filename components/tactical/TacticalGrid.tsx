@@ -40,6 +40,7 @@ export const TacticalGrid = () => {
     const gridSize = 50;
     
     function drawGrid() {
+      if (!canvas || !ctx) return;
       const scrollProgress = scrollProgressRef.current;
       
       // Clear canvas
@@ -91,6 +92,7 @@ export const TacticalGrid = () => {
     }
     
     function drawRadarSweep() {
+      if (!canvas || !ctx) return;
       const centerX = canvas.width * 0.5;
       const centerY = canvas.height * 0.6;
       const radius = 300;
@@ -120,6 +122,7 @@ export const TacticalGrid = () => {
     }
     
     function drawHexZones() {
+      if (!canvas || !ctx) return;
       const zones = [
         { x: 0.3, y: 0.4, size: 60, color: 'rgba(107, 93, 84, 0.2)' },
         { x: 0.5, y: 0.6, size: 80, color: 'rgba(74, 95, 74, 0.2)' },
