@@ -42,28 +42,27 @@ export async function PUT(
     const { 
       title, 
       slug, 
+      badge,
       challenge, 
       solution, 
-      benefits, 
+      benefits,
+      features,
+      stats,
       seo_keywords, 
       meta_description, 
       hero_image,
+      hero_subtitle,
       cta_label,
+      cta_subtitle,
+      use_case_param,
       published,
       order 
     } = body
 
     // Validate required fields
-    if (!title || !slug || !challenge || !solution || !meta_description || !hero_image) {
+    if (!title || !slug || !challenge || !solution || !meta_description) {
       return NextResponse.json(
-        { error: 'Missing required fields: title, slug, challenge, solution, meta_description, hero_image' },
-        { status: 400 }
-      )
-    }
-
-    if (!benefits || benefits.length === 0) {
-      return NextResponse.json(
-        { error: 'At least one benefit is required' },
+        { error: 'Missing required fields: title, slug, challenge, solution, meta_description' },
         { status: 400 }
       )
     }
@@ -84,13 +83,19 @@ export async function PUT(
       data: {
         title,
         slug,
+        badge: badge || 'AI Solution',
         challenge,
         solution,
         benefits: benefits || [],
+        features: features || [],
+        stats: stats || [],
         seo_keywords: seo_keywords || [],
         meta_description,
-        hero_image,
+        hero_image: hero_image || null,
+        hero_subtitle: hero_subtitle || null,
         cta_label: cta_label || 'Book a Demo',
+        cta_subtitle: cta_subtitle || null,
+        use_case_param: use_case_param || null,
         published: published || false,
         order: order || 0,
       },
