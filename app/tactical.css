@@ -1,0 +1,327 @@
+/* Tactical/Military Theme Overrides and Extensions */
+
+/* Import fonts - Tesla-inspired clean aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    /* Base - Military Operations Dark */
+    --bg-command: #0A1410;
+    --bg-tactical: #0F1A15;
+    --bg-tertiary: #1A1F2E;
+    --bg-overlay: rgba(10, 20, 16, 0.85);
+
+    /* Tactical Colors (from GIFs) */
+    --cyan-bright: #00FFE5;      /* Friendly systems/UAVs */
+    --green-neon: #00FF88;       /* Active/operational */
+    --red-alert: #FF4466;        /* Targets/threats */
+    --yellow-waypoint: #FFD700;  /* Waypoints/nodes */
+    --orange-warn: #FF8844;      /* Warning states */
+
+    /* Grid/Wireframe */
+    --grid-cyan: rgba(0, 255, 229, 0.15);
+    --grid-line: rgba(0, 255, 229, 0.3);
+    --connection-line: rgba(0, 255, 229, 0.5);
+
+    /* Terrain/Environment (from coverage GIF) */
+    --terrain-brown: #6B5D54;
+    --terrain-green: #4A5F4A;
+    --terrain-dark: #2A3830;
+
+    /* Neutrals */
+    --gray-50: #F8FAFC;
+    --gray-100: #E2E8F0;
+    --gray-400: #64748B;
+    --gray-600: #475569;
+    --gray-800: #1E293B;
+    --gray-900: #0F172A;
+
+    /* Text */
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-tertiary: rgba(255, 255, 255, 0.5);
+
+    /* Font Families */
+    --font-primary: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Font Sizes */
+    --text-xs: 12px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 18px;
+    --text-xl: 20px;
+    --text-2xl: 24px;
+    --text-3xl: 30px;
+    --text-4xl: 36px;
+    --text-5xl: 48px;
+    --text-6xl: 64px;
+
+    /* Line Heights */
+    --leading-tight: 1.1;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.75;
+
+    /* Letter Spacing */
+    --tracking-tight: -0.02em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.05em;
+    --tracking-wider: 0.1em;
+
+    /* Spacing Scale */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-12: 48px;
+    --space-16: 64px;
+    --space-24: 96px;
+    --space-32: 128px;
+  }
+
+  body {
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--text-primary);
+    background: var(--bg-command);
+    overflow-x: hidden;
+  }
+
+  /* Selection colors */
+  ::selection {
+    background: var(--cyan-bright);
+    color: var(--bg-command);
+  }
+
+  ::-moz-selection {
+    background: var(--cyan-bright);
+    color: var(--bg-command);
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-tactical);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--cyan-bright);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--green-neon);
+  }
+}
+
+/* Hide default cursor */
+* {
+  cursor: none !important;
+}
+
+/* Allow cursor on inputs */
+input, textarea, select {
+  cursor: text !important;
+}
+
+/* Center dot */
+.cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--cyan-bright);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  box-shadow: 
+    0 0 10px var(--cyan-bright),
+    0 0 20px var(--cyan-bright);
+  transition: transform 0.15s ease;
+}
+
+.cursor-dot.clicking {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* Tactical cursor ring */
+.tactical-cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  color: var(--cyan-bright);
+  opacity: 0.4; /* More subtle */
+  transition: all 0.2s ease;
+}
+
+.tactical-cursor.hovering {
+  transform: translate(-50%, -50%) scale(1.3);
+  opacity: 1;
+  color: var(--green-neon);
+}
+
+.tactical-cursor.clicking {
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.cursor-ring {
+  filter: drop-shadow(0 0 4px currentColor);
+  animation: rotate-cursor 20s linear infinite; /* Much slower rotation */
+}
+
+@keyframes rotate-cursor {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* UAV Arrow */
+.cursor-arrow {
+  position: fixed;
+  width: 24px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  color: var(--green-neon);
+  opacity: 0.7;
+}
+
+.arrow-svg {
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* Tactical grid canvas - toned down for B2B */
+.tactical-grid-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3; /* Reduced opacity for less distraction */
+}
+
+/* Floating formation - subtle for B2B */
+.floating-formation {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4; /* Reduced for professional look */
+}
+
+.formation-shape {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 8px var(--cyan-bright));
+  transition: all 0.3s ease;
+}
+
+.formation-shape svg {
+  position: relative;
+  z-index: 2;
+}
+
+.shape-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--cyan-bright);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-ring 2s ease-out infinite;
+  opacity: 0.5;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Waypoint markers - simplified to cyan only */
+.waypoint-marker {
+  pointer-events: none;
+  z-index: 100;
+}
+
+.waypoint-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.waypoint-diamond {
+  width: 12px;
+  height: 12px;
+  background: var(--cyan-bright);
+  transform: rotate(45deg);
+  box-shadow: 0 0 12px var(--cyan-bright);
+  opacity: 0.6;
+}
+
+.waypoint-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--cyan-bright);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  text-shadow: 0 0 8px rgba(0, 255, 229, 0.5);
+  opacity: 0.7;
+}
+
+/* Transition shapes - removed for cleaner professional look */
+.transition-shapes {
+  display: none;
+}
+
+.transition-shape {
+  display: none;
+}
+
+/* Responsive: disable on mobile */
+@media (max-width: 768px) {
+  * {
+    cursor: auto !important;
+  }
+  
+  .cursor-dot,
+  .tactical-cursor,
+  .cursor-arrow,
+  .floating-formation,
+  .transition-shapes {
+    display: none;
+  }
+}
+
+/* Hide on mobile/tablet */
+@media (max-width: 1024px) {
+  .waypoint-marker {
+    display: none;
+  }
+}
+
+.site-main {
+  position: relative;
+  z-index: 10;
+}

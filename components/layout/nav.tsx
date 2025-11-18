@@ -32,7 +32,7 @@ export function Nav() {
   const isActive = (href: string) => pathname === href || pathname?.startsWith(href + '/')
 
   return (
-    <nav className="sticky top-0 z-50 bg-slate-900/95 border-b border-slate-800 shadow-xl backdrop-blur-sm">
+    <nav className="sticky top-0 z-50 bg-bg-command/95 border-b border-cyan-bright/20 shadow-xl backdrop-blur-md" style={{ borderColor: 'rgba(0, 255, 229, 0.2)' }}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -54,11 +54,12 @@ export function Nav() {
                 <Link
                   href={link.href}
                   className={cn(
-                    'text-sm font-medium transition-colors hover:text-primary',
+                    'text-sm font-medium transition-colors uppercase tracking-wider',
                     isActive(link.href)
-                      ? 'text-primary'
-                      : 'text-slate-300'
+                      ? 'text-cyan-bright'
+                      : 'text-slate-300 hover:text-cyan-bright'
                   )}
+                  style={isActive(link.href) ? { color: '#00FFE5' } : {}}
                 >
                   {link.label}
                 </Link>
@@ -66,12 +67,26 @@ export function Nav() {
                 {/* Dropdown for Use Cases */}
                 {link.children && (
                   <div className="absolute left-0 top-full pt-2 w-80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
-                    <div className="bg-slate-900 rounded-lg shadow-2xl border border-slate-800 py-3 overflow-hidden">
+                    <div className="rounded-lg shadow-2xl border py-3 overflow-hidden" style={{ backgroundColor: '#0F1A15', borderColor: 'rgba(0, 255, 229, 0.3)' }}>
                       {link.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block px-5 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-primary transition-colors"
+                          className="block px-5 py-3 text-sm text-slate-300 transition-colors"
+                          style={{
+                            ':hover': {
+                              backgroundColor: 'rgba(0, 255, 229, 0.1)',
+                              color: '#00FFE5'
+                            }
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = 'rgba(0, 255, 229, 0.1)';
+                            e.currentTarget.style.color = '#00FFE5';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'transparent';
+                            e.currentTarget.style.color = '';
+                          }}
                         >
                           {child.label}
                         </Link>
