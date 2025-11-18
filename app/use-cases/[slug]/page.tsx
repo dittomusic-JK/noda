@@ -6,6 +6,10 @@ import { SectionHeader } from '@/components/sections/section-header'
 import { Card, CardHeader, CardContent } from '@/components/ui/card'
 import { prisma } from '@/lib/db/prisma'
 
+// Enable dynamic rendering when database is not available at build time
+export const dynamic = 'force-dynamic'
+export const dynamicParams = true
+
 // Legacy data structure kept for reference - now loading from database
 const useCasesDataLegacy: Record<string, any> = {
   'multi-domain-swarm-coordination': {
@@ -175,14 +179,21 @@ const useCasesDataLegacy: Record<string, any> = {
 }
 
 export async function generateStaticParams() {
-  const useCases = await prisma.useCase.findMany({
-    where: { published: true },
-    select: { slug: true },
-  })
-  
-  return useCases.map((useCase) => ({
-    slug: useCase.slug,
-  }))
+  try {
+    const useCases = await prisma.useCase.findMany({
+      where: { published: true },
+      select: { slug: true },
+    })
+    
+    return useCases.map((useCase) => ({
+      slug: useCase.slug,
+    }))
+  } catch (error) {
+    console.warn('Unable to fetch use cases at build time:', error)
+    // Return empty array if database is not available at build time
+    // Pages will be generated on-demand at runtime
+    return []
+  }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
