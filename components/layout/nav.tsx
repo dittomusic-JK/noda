@@ -73,12 +73,6 @@ export function Nav() {
                           key={child.href}
                           href={child.href}
                           className="block px-5 py-3 text-sm text-slate-300 transition-colors"
-                          style={{
-                            ':hover': {
-                              backgroundColor: 'rgba(0, 255, 229, 0.1)',
-                              color: '#00FFE5'
-                            }
-                          }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.backgroundColor = 'rgba(0, 255, 229, 0.1)';
                             e.currentTarget.style.color = '#00FFE5';
