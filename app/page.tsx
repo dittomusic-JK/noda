@@ -7,6 +7,7 @@ import { FloatingFormation } from '@/components/tactical/FloatingFormation';
 import { SectionTransitions } from '@/components/tactical/SectionTransitions';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { TrustIndicatorsSection } from '@/components/sections/TrustIndicatorsSection';
+import { MetricsSection } from '@/components/sections/MetricsSection';
 import { StatementSection } from '@/components/sections/StatementSection';
 import { CapabilitiesSection } from '@/components/sections/CapabilitiesSection';
 import { WhyNodaSection } from '@/components/sections/WhyNodaSection';
@@ -31,7 +32,11 @@ export default function TacticalHomePage() {
         
         <TrustIndicatorsSection />
         
-        <div className="spacer" style={{ height: '50vh' }} data-waypoint-hint="SCROLL TO EXPLORE" />
+        <div className="spacer" style={{ height: '20vh' }} />
+        
+        <MetricsSection />
+        
+        <div className="spacer" style={{ height: '30vh' }} />
         
         <StatementSection />
         

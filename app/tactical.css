@@ -1,7 +1,7 @@
 /* Tactical/Military Theme Overrides and Extensions */
 
-/* Import fonts - Tesla-inspired clean aesthetic */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+/* Import fonts - Professional B2B aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @layer base {
@@ -12,12 +12,12 @@
     --bg-tertiary: #1A1F2E;
     --bg-overlay: rgba(10, 20, 16, 0.85);
 
-    /* Tactical Colors (from GIFs) */
-    --cyan-bright: #00FFE5;      /* Friendly systems/UAVs */
-    --green-neon: #00FF88;       /* Active/operational */
-    --red-alert: #FF4466;        /* Targets/threats */
-    --yellow-waypoint: #FFD700;  /* Waypoints/nodes */
-    --orange-warn: #FF8844;      /* Warning states */
+    /* Professional Colors - Toned Down */
+    --cyan-bright: #3B82F6;      /* Primary blue - professional */
+    --green-neon: #10B981;       /* Active/operational - emerald */
+    --red-alert: #EF4444;        /* Targets/threats - red */
+    --yellow-waypoint: #F59E0B;  /* Waypoints/nodes - amber */
+    --orange-warn: #F97316;      /* Warning states - orange */
 
     /* Grid/Wireframe */
     --grid-cyan: rgba(0, 255, 229, 0.15);
@@ -43,7 +43,7 @@
     --text-tertiary: rgba(255, 255, 255, 0.5);
 
     /* Font Families */
-    --font-primary: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
 
     /* Font Sizes */
@@ -151,7 +151,7 @@ input, textarea, select {
   transform: translate(-50%, -50%) scale(1.5);
 }
 
-/* Tactical cursor ring */
+/* Tactical cursor ring - very subtle */
 .tactical-cursor {
   position: fixed;
   width: 40px;
@@ -160,7 +160,7 @@ input, textarea, select {
   z-index: 9999;
   transform: translate(-50%, -50%);
   color: var(--cyan-bright);
-  opacity: 0.4; /* More subtle */
+  opacity: 0.2; /* Very subtle for professional look */
   transition: all 0.2s ease;
 }
 
@@ -200,7 +200,7 @@ input, textarea, select {
   filter: drop-shadow(0 0 6px currentColor);
 }
 
-/* Tactical grid canvas - toned down for B2B */
+/* Tactical grid canvas - very subtle for professional look */
 .tactical-grid-canvas {
   position: fixed;
   top: 0;
@@ -209,16 +209,16 @@ input, textarea, select {
   height: 100%;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.3; /* Reduced opacity for less distraction */
+  opacity: 0.08; /* Very subtle - professional background */
 }
 
-/* Floating formation - subtle for B2B */
+/* Floating formation - very subtle for professional look */
 .floating-formation {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.4; /* Reduced for professional look */
+  opacity: 0.15; /* Very reduced for professional look */
 }
 
 .formation-shape {

@@ -7,21 +7,22 @@ export const HeroSection = () => {
         {/* Overline */}
         <div className="overline" data-aos="fade-up">
           <span className="bracket">[</span>
-          DEFENSE AI & AUTONOMOUS SYSTEMS
+          CROSS-PLATFORM ALGORITHMIC WARFARE
           <span className="bracket">]</span>
         </div>
         
         {/* Main headline */}
         <h1 className="hero-headline" data-aos="fade-up" data-aos-delay="100">
-          The World&apos;s Deepest<br/>
-          <span className="gradient-text">Defense Algorithm</span><br/>
-          Repository
+          Building the Best<br/>
+          <span className="gradient-text">Chess Player</span><br/>
+          Not the Chess Pieces
         </h1>
         
         {/* Subheadline */}
         <p className="hero-subhead" data-aos="fade-up" data-aos-delay="200">
-          Open orchestrator for collaborative autonomous systems.<br/>
-          Manage desired effects, not individual systems.
+          Vendor-agnostic orchestration software that enables unmanned systems<br/>
+          to act collaboratively and autonomously. Zero-friction integration.<br/>
+          <strong>No software or hardware modifications required.</strong>
         </p>
         
         
