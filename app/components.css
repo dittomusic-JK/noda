@@ -330,7 +330,7 @@
 .hero-headline {
   font-family: var(--font-mono); /* Match product UI - monospace headlines */
   font-size: clamp(36px, 7vw, 56px);
-  font-weight: 600;
+  font-weight: 400; /* Regular weight - not bold */
   line-height: var(--leading-tight);
   color: var(--text-primary);
   margin-bottom: var(--space-8);
