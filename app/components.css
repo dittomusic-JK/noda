@@ -328,20 +328,22 @@
 }
 
 .hero-headline {
-  font-size: clamp(40px, 8vw, 64px);
-  font-weight: 600; /* Lighter weight for Tesla aesthetic */
+  font-family: var(--font-mono); /* Match product UI - monospace headlines */
+  font-size: clamp(36px, 7vw, 56px);
+  font-weight: 600;
   line-height: var(--leading-tight);
   color: var(--text-primary);
   margin-bottom: var(--space-8);
-  letter-spacing: -0.02em; /* Tighter tracking */
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--cyan-bright) 0%, var(--green-neon) 100%);
+  background: linear-gradient(135deg, #53FEAA 0%, #10B981 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 700; /* Slightly heavier for emphasis */
+  font-weight: 700;
 }
 
 

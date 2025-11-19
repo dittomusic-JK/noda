@@ -12,17 +12,17 @@
     --bg-tertiary: #1A1F2E;
     --bg-overlay: rgba(10, 20, 16, 0.85);
 
-    /* Professional Colors - Toned Down */
-    --cyan-bright: #3B82F6;      /* Primary blue - professional */
+    /* Brand Colors - Match Product UI */
+    --cyan-bright: #53FEAA;      /* Primary brand color - cyan-green */
     --green-neon: #10B981;       /* Active/operational - emerald */
     --red-alert: #EF4444;        /* Targets/threats - red */
     --yellow-waypoint: #F59E0B;  /* Waypoints/nodes - amber */
     --orange-warn: #F97316;      /* Warning states - orange */
 
     /* Grid/Wireframe */
-    --grid-cyan: rgba(0, 255, 229, 0.15);
-    --grid-line: rgba(0, 255, 229, 0.3);
-    --connection-line: rgba(0, 255, 229, 0.5);
+    --grid-cyan: rgba(83, 254, 170, 0.15);
+    --grid-line: rgba(83, 254, 170, 0.3);
+    --connection-line: rgba(83, 254, 170, 0.5);
 
     /* Terrain/Environment (from coverage GIF) */
     --terrain-brown: #6B5D54;

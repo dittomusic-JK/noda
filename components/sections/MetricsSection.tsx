@@ -83,7 +83,7 @@ export const MetricsSection = () => {
 
         .metric-card {
           background: linear-gradient(135deg, rgba(15, 26, 21, 0.9), rgba(10, 20, 16, 0.9));
-          border: 1px solid rgba(59, 130, 246, 0.2);
+          border: 1px solid rgba(83, 254, 170, 0.2);
           border-radius: 16px;
           padding: 32px 24px;
           text-align: center;
@@ -91,9 +91,9 @@ export const MetricsSection = () => {
         }
 
         .metric-card:hover {
-          border-color: rgba(59, 130, 246, 0.5);
+          border-color: rgba(83, 254, 170, 0.5);
           transform: translateY(-4px);
-          box-shadow: 0 12px 24px rgba(59, 130, 246, 0.1);
+          box-shadow: 0 12px 24px rgba(83, 254, 170, 0.1);
         }
 
         .metric-label {
@@ -109,7 +109,7 @@ export const MetricsSection = () => {
           font-size: 56px;
           font-weight: 700;
           line-height: 1;
-          background: linear-gradient(135deg, #3B82F6, #10B981);
+          background: linear-gradient(135deg, #53FEAA, #10B981);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -130,7 +130,7 @@ export const MetricsSection = () => {
         }
 
         .gradient-text {
-          background: linear-gradient(135deg, #3B82F6, #10B981);
+          background: linear-gradient(135deg, #53FEAA, #10B981);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -140,11 +140,11 @@ export const MetricsSection = () => {
           font-size: 14px;
           font-weight: 600;
           letter-spacing: 0.15em;
-          color: rgba(59, 130, 246, 0.9);
+          color: rgba(83, 254, 170, 0.9);
         }
 
         .bracket {
-          color: rgba(59, 130, 246, 0.5);
+          color: rgba(83, 254, 170, 0.5);
         }
       `}</style>
     </section>

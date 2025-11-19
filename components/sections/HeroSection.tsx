@@ -20,9 +20,8 @@ export const HeroSection = () => {
         
         {/* Subheadline */}
         <p className="hero-subhead" data-aos="fade-up" data-aos-delay="200">
-          Vendor-agnostic orchestration software that enables unmanned systems<br/>
-          to act collaboratively and autonomously. Zero-friction integration.<br/>
-          <strong>No software or hardware modifications required.</strong>
+          Vendor-agnostic orchestration software that enables unmanned systems to act collaboratively and autonomously.<br/>
+          Zero-friction integration. <strong>No software or hardware modifications required.</strong>
         </p>
         
         
