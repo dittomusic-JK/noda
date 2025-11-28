@@ -7,7 +7,7 @@ export function Badge({
   size = 'md',
   className,
 }: BadgeProps & { className?: string }) {
-  const baseStyles = 'inline-flex items-center font-semibold rounded-full'
+  const baseStyles = 'inline-flex items-center font-bold uppercase tracking-wider'
   
   const variants = {
     default: 'bg-slate-800 text-slate-300',

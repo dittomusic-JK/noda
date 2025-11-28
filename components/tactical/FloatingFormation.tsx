@@ -90,23 +90,66 @@ export const FloatingFormation = () => {
     
     window.addEventListener('formation-change', handleFormationChange as EventListener);
     
-    // Change formations on scroll
+    // Hero section - V formation with subtle movement
+    ScrollTrigger.create({
+      trigger: '.hero-section',
+      start: 'top top',
+      end: 'bottom center',
+      scrub: 1,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        shapes.forEach((shape, i) => {
+          if (shape) {
+            gsap.to(shape, {
+              y: `${progress * 50 * (i % 2 === 0 ? 1 : -1)}px`,
+              duration: 0.5
+            });
+          }
+        });
+      },
+      onLeave: () => animateToFormation(formations.scattered)
+    });
+    
+    // Trust section - scatter formation
+    ScrollTrigger.create({
+      trigger: '.trust-section',
+      start: 'top center',
+      end: 'bottom center',
+      onEnter: () => animateToFormation(formations.scattered),
+      onLeaveBack: () => animateToFormation(formations.v_formation)
+    });
+    
+    // Statement section - team formation
     ScrollTrigger.create({
       trigger: '.statement-section',
       start: 'top center',
       end: 'bottom center',
       onEnter: () => animateToFormation(formations.team_formation),
-      onLeaveBack: () => animateToFormation(formations.v_formation)
+      onLeaveBack: () => animateToFormation(formations.scattered)
     });
     
+    // Capabilities section - line formation with movement
     ScrollTrigger.create({
       trigger: '.capabilities-section',
       start: 'top center',
       end: 'bottom center',
+      scrub: 2,
       onEnter: () => animateToFormation(formations.line_formation),
+      onUpdate: (self) => {
+        const progress = self.progress;
+        shapes.forEach((shape, i) => {
+          if (shape) {
+            gsap.to(shape, {
+              x: `${Math.sin(progress * Math.PI + i) * 20}px`,
+              duration: 0.3
+            });
+          }
+        });
+      },
       onLeaveBack: () => animateToFormation(formations.team_formation)
     });
     
+    // Why NODA section - circle formation
     ScrollTrigger.create({
       trigger: '.why-noda-section',
       start: 'top center',
@@ -132,8 +175,8 @@ export const FloatingFormation = () => {
           <svg width="16" height="16" viewBox="0 0 16 16">
             <path 
               d="M8 2 L14 14 L8 12 L2 14 Z" 
-              fill="#00FFE5"
-              opacity="0.8"
+              fill="#6BB0FF"
+              opacity="0.9"
             />
           </svg>
           <div className="shape-pulse" />

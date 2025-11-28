@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk, Michroma } from "next/font/google";
 import "./globals.css";
 import "./tactical.css";
 import "./components.css";
+import "./hero-immersive.css";
+import "./core-capabilities.css";
 import { Nav } from "@/components/layout/nav";
 import { Footer } from "@/components/layout/footer";
 import { SessionProvider } from "@/components/providers/session-provider";
@@ -11,6 +13,25 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-space-grotesk",
+});
+
+const michroma = Michroma({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-michroma",
 });
 
 export const metadata: Metadata = {
@@ -41,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} ${michroma.variable}`}>
       <body className="antialiased flex flex-col min-h-screen">
         <SessionProvider>
           <Nav />

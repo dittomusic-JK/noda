@@ -3,7 +3,7 @@ import { CardProps } from '@/types/components'
 import { cn } from '@/lib/utils/cn'
 
 export function Card({ children, className, href }: CardProps) {
-  const baseStyles = 'bg-slate-900 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden border border-slate-800'
+  const baseStyles = 'bg-slate-900 shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden border border-slate-800'
   
   if (href) {
     return (

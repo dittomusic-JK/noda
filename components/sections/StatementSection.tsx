@@ -31,9 +31,9 @@ export const StatementSection = () => {
     <section className="statement-section" ref={sectionRef} data-waypoint-label="COORDINATION">
       <div className="statement-wrapper">
         <h2 className="statement-text">
-          Autonomous systems should coordinate like tactical teams,<br />
+          Coordinate Like Teams,<br />
           <span className={`typewriter-line ${showTypewriter ? 'active' : ''}`}>
-            not operate as isolated platforms.
+            Not Isolated Platforms
           </span>
         </h2>
       </div>

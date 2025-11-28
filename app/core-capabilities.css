@@ -1,0 +1,285 @@
+/* CORE CAPABILITIES - GAMBIT STYLE */
+
+.core-capabilities-section {
+  position: relative;
+  background: #0A1410;
+  padding: 0;
+  margin-top: -2px; /* Seamless connect to hero */
+  z-index: 1;
+}
+
+/* Individual capability item */
+.capability-item {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 80px;
+  padding: 0 max(80px, calc((100vw - 1600px) / 2));
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+/* Left align: text left, visual right */
+.capability-left {
+  grid-template-areas: "content visual";
+}
+
+.capability-left .capability-content {
+  grid-area: content;
+}
+
+.capability-left .capability-visual-wrapper {
+  grid-area: visual;
+  justify-self: end;
+}
+
+/* Right align: visual left, text right */
+.capability-right {
+  grid-template-areas: "visual content";
+}
+
+.capability-right .capability-content {
+  grid-area: content;
+  text-align: left;
+}
+
+.capability-right .capability-visual-wrapper {
+  grid-area: visual;
+  justify-self: start;
+}
+
+/* Content styling - Cool box container */
+.capability-content {
+  position: relative;
+  z-index: 10;
+  max-width: 600px;
+  padding: 40px;
+  background: rgba(15, 26, 21, 0.8);
+  border: 2px solid rgba(83, 254, 170, 0.3);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 0 80px rgba(83, 254, 170, 0.05),
+    0 0 1px rgba(83, 254, 170, 0.4);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.capability-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-top: 2px solid var(--cyan-bright);
+  border-left: 2px solid var(--cyan-bright);
+  opacity: 0.5;
+}
+
+.capability-content::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border-bottom: 2px solid var(--cyan-bright);
+  border-right: 2px solid var(--cyan-bright);
+  opacity: 0.5;
+}
+
+.capability-item:hover .capability-content {
+  border-color: rgba(83, 254, 170, 0.6);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.7),
+    inset 0 0 100px rgba(83, 254, 170, 0.1),
+    0 0 60px rgba(83, 254, 170, 0.3);
+}
+
+.capability-number {
+  display: inline-block;
+  padding: 5px 14px;
+  background: transparent;
+  border: 2px solid var(--cyan-bright);
+  color: var(--cyan-bright);
+  font-family: var(--font-mono-rogient);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.capability-number::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--cyan-bright);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.capability-item:hover .capability-number::before {
+  transform: scaleX(1);
+}
+
+.capability-item:hover .capability-number {
+  color: #0A1410;
+}
+
+.capability-title {
+  font-family: var(--font-michroma);
+  font-size: clamp(16px, 2.2vw, 24px);
+  font-weight: 400;
+  line-height: 1.4;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.capability-description {
+  font-family: var(--font-inter);
+  font-size: clamp(12px, 1.3vw, 14px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 440px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* Visual styling - Ready for 3D scroll animation */
+.capability-visual-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.capability-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 2px solid rgba(83, 254, 170, 0.15);
+  background: rgba(10, 20, 16, 0.6);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 1px rgba(83, 254, 170, 0.3);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.capability-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9) contrast(1.1);
+}
+
+.visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(83, 254, 170, 0.1) 0%,
+    transparent 50%,
+    rgba(16, 185, 129, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+/* Add tactical grid to visuals */
+.capability-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(83, 254, 170, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(83, 254, 170, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .capability-item {
+    padding: 80px 40px;
+    gap: 40px;
+  }
+
+  .capability-number {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .capability-title {
+    font-size: clamp(28px, 6vw, 42px);
+  }
+
+  .capability-description {
+    font-size: clamp(14px, 2.5vw, 18px);
+  }
+}
+
+@media (max-width: 768px) {
+  .capability-item {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "visual"
+      "content" !important;
+    min-height: auto;
+    padding: 60px 24px;
+    gap: 40px;
+  }
+
+  .capability-left .capability-content,
+  .capability-right .capability-content {
+    padding: 24px;
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .capability-left .capability-visual-wrapper,
+  .capability-right .capability-visual-wrapper {
+    justify-self: stretch;
+    max-width: 100%;
+  }
+
+  .capability-visual {
+    aspect-ratio: 16 / 12;
+  }
+}
+
+/* Hover effects */
+.capability-visual:hover {
+  border-color: rgba(83, 254, 170, 0.6);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.7),
+    0 0 60px rgba(83, 254, 170, 0.2);
+}
+
+.capability-visual:hover img {
+  transform: scale(1.05);
+  filter: brightness(1) contrast(1.15);
+}
+
+/* Number highlight on scroll */
+@keyframes pulse-number {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--cyan-bright);
+  }
+  50% {
+    box-shadow: 0 0 40px var(--cyan-bright);
+  }
+}

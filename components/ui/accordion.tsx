@@ -32,11 +32,11 @@ export function Accordion({
       {items.map(item => (
         <div
           key={item.id}
-          className="border border-[--color-border] rounded-lg overflow-hidden"
+          className="border border-[--color-border] overflow-hidden"
         >
           <button
             onClick={() => toggleItem(item.id)}
-            className="w-full px-6 py-4 text-left font-semibold bg-white hover:bg-[--color-muted] transition-colors flex justify-between items-center"
+            className="w-full px-6 py-4 text-left font-bold uppercase tracking-wide bg-white hover:bg-[--color-muted] transition-colors flex justify-between items-center"
             aria-expanded={openItems.includes(item.id)}
           >
             <span>{item.title}</span>

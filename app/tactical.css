@@ -113,7 +113,7 @@
 
   ::-webkit-scrollbar-thumb {
     background: var(--cyan-bright);
-    border-radius: 5px;
+    
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -137,7 +137,7 @@ input, textarea, select {
   width: 6px;
   height: 6px;
   background: var(--cyan-bright);
-  border-radius: 50%;
+  
   pointer-events: none;
   z-index: 10000;
   transform: translate(-50%, -50%);
@@ -242,7 +242,7 @@ input, textarea, select {
   width: 24px;
   height: 24px;
   border: 2px solid var(--cyan-bright);
-  border-radius: 50%;
+  
   transform: translate(-50%, -50%);
   animation: pulse-ring 2s ease-out infinite;
   opacity: 0.5;
@@ -324,4 +324,252 @@ input, textarea, select {
 .site-main {
   position: relative;
   z-index: 10;
+}
+
+/* ================================================
+   Drone Journey Section - 3D Scroll Animation
+   ================================================ */
+
+.drone-journey-container {
+  position: relative;
+  height: 400vh; /* 4 sections worth of scroll */
+  background: #030806; /* Very dark for grid to blend */
+}
+
+.drone-journey-canvas-wrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.drone-scene-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.drone-scene-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.drone-scene-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-command);
+}
+
+/* Loading indicator */
+.drone-scene-loader {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  z-index: 100;
+}
+
+.loader-bar {
+  width: 200px;
+  height: 2px;
+  background: rgba(83, 254, 170, 0.2);
+  overflow: hidden;
+}
+
+.loader-fill {
+  height: 100%;
+  background: var(--cyan-bright);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--cyan-bright);
+}
+
+.loader-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--cyan-bright);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  opacity: 0.8;
+}
+
+/* Scrollable sections overlay */
+.drone-journey-sections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.drone-journey-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 max(60px, calc((100vw - 1400px) / 2));
+}
+
+/* Capability content within drone journey - using same styles as CoreCapabilities */
+.drone-journey-section .capability-content {
+  position: relative;
+  z-index: 10;
+  max-width: 500px;
+  padding: 32px;
+  background: rgba(15, 26, 21, 0.85);
+  border: 2px solid rgba(83, 254, 170, 0.3);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 0 80px rgba(83, 254, 170, 0.05),
+    0 0 1px rgba(83, 254, 170, 0.4);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  pointer-events: auto;
+}
+
+.drone-journey-section .capability-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-top: 2px solid var(--cyan-bright);
+  border-left: 2px solid var(--cyan-bright);
+  opacity: 0.5;
+}
+
+.drone-journey-section .capability-content::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border-bottom: 2px solid var(--cyan-bright);
+  border-right: 2px solid var(--cyan-bright);
+  opacity: 0.5;
+}
+
+.drone-journey-section .capability-number {
+  display: inline-block;
+  padding: 4px 12px;
+  background: transparent;
+  border: 2px solid var(--cyan-bright);
+  color: var(--cyan-bright);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+}
+
+.drone-journey-section .capability-title {
+  font-family: var(--font-primary);
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 600;
+  line-height: 1.3;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.drone-journey-section .capability-description {
+  font-family: var(--font-primary);
+  font-size: clamp(12px, 1.2vw, 14px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 400;
+}
+
+/* Positioning: alternate left and right */
+.drone-journey-section.capability-left {
+  justify-content: flex-start;
+}
+
+.drone-journey-section.capability-right {
+  justify-content: flex-end;
+}
+
+/* Mobile fallback */
+.drone-scene-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-command);
+}
+
+.drone-scene-mobile-content {
+  text-align: center;
+  padding: var(--space-8);
+}
+
+.mobile-message {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .drone-journey-section {
+    padding: var(--space-8);
+    padding-bottom: 10vh;
+  }
+  
+  .section-title {
+    font-size: var(--text-2xl);
+  }
+  
+  .section-subtitle {
+    font-size: var(--text-base);
+  }
+  
+  .section-1,
+  .section-2,
+  .section-3 {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .drone-journey-container {
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .drone-journey-canvas-wrapper {
+    display: none;
+  }
+  
+  .drone-journey-sections {
+    position: relative;
+  }
+  
+  .drone-journey-section {
+    height: auto;
+    min-height: 50vh;
+    padding: var(--space-8) var(--space-4);
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+  
+  .section-content {
+    text-align: left !important;
+  }
+  
+  .section-title {
+    font-size: var(--text-xl);
+  }
 }

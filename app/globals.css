@@ -1,5 +1,38 @@
 @import "tailwindcss";
 
+/* Custom Font - Good Times */
+@font-face {
+  font-family: 'Good Times';
+  src: url('/goodtimesbk-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Good Times';
+  src: url('/goodtimesrg-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mono Rogient';
+  src: url('/Mono Rogient.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Polaris';
+  src: url('/Polaris.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* NODA AI - Professional Defense Tech Theme */
   /* Uses Tailwind's native dark mode with custom primary color */
@@ -7,8 +40,13 @@
   --color-primary: rgb(60 255 155);
   --color-primary-hover: rgb(45 220 135);
   
-  --font-sans: ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, 'SF Mono', monospace;
+  --font-sans: var(--font-inter, ui-sans-serif, system-ui, sans-serif);
+  --font-mono: var(--font-mono, ui-monospace, 'JetBrains Mono', monospace);
+  --font-space-grotesk: var(--font-space-grotesk, ui-sans-serif, system-ui, sans-serif);
+  --font-michroma: var(--font-michroma, ui-sans-serif, system-ui, sans-serif);
+  --font-good-times: 'Good Times', sans-serif;
+  --font-mono-rogient: 'Mono Rogient', monospace;
+  --font-polaris: 'Polaris', sans-serif;
 }
 
 /* Base Styles */
@@ -23,10 +61,21 @@
   
   body {
     @apply bg-slate-950 text-slate-50 antialiased;
+    font-family: var(--font-inter);
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-slate-50;
+    @apply text-slate-50;
+    font-family: var(--font-inter);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  h1 {
+    font-family: var(--font-michroma);
+    font-weight: 400;
+    letter-spacing: 0.08em;
   }
   
   a {

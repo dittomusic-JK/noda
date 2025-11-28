@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -10,9 +10,18 @@ if (typeof window !== 'undefined') {
 
 export const WhyNodaSection = () => {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const [animationTriggered, setAnimationTriggered] = useState(false);
 
   useEffect(() => {
     const cards = cardsRef.current.filter(Boolean);
+    
+    // Trigger heading animation on scroll
+    ScrollTrigger.create({
+      trigger: '.why-noda-section',
+      start: 'top 80%',
+      onEnter: () => setAnimationTriggered(true),
+    });
     
     // Staggered float-in animation
     gsap.fromTo(
@@ -53,8 +62,8 @@ export const WhyNodaSection = () => {
   const values = [
     {
       label: 'Built by Veterans',
-      sublabel: 'Scientists, and AI Practitioners',
-      description: 'From NASA, MIT, DARPA, and GTRI. Patriots focused on defense innovation.',
+      sublabel: 'Scientists & AI Practitioners',
+      description: 'NASA. MIT. DARPA. GTRI. Patriots building for patriots.',
       icon: (
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
           <path d="M20 5L35 15V25L20 35L5 25V15L20 5Z" stroke="currentColor" strokeWidth="2" />
@@ -63,9 +72,9 @@ export const WhyNodaSection = () => {
       ),
     },
     {
-      label: 'Agnostic & Open',
-      sublabel: 'Platform-agnostic',
-      description: 'Collaborative and open architecture. No vendor lock-in.',
+      label: 'Platform Agnostic',
+      sublabel: 'Open Architecture',
+      description: 'Zero vendor lock-in. Collaborate with any system.',
       icon: (
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
           <rect x="5" y="5" width="30" height="30" stroke="currentColor" strokeWidth="2" />
@@ -76,8 +85,8 @@ export const WhyNodaSection = () => {
     },
     {
       label: 'Mission Effects',
-      sublabel: 'Effects-based approach',
-      description: 'Focus on desired mission effects, not individual system management.',
+      sublabel: 'Not Platform Management',
+      description: 'Define outcomes. AI orchestrates execution.',
       icon: (
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
           <circle cx="20" cy="20" r="15" stroke="currentColor" strokeWidth="2" />
@@ -88,9 +97,9 @@ export const WhyNodaSection = () => {
       ),
     },
     {
-      label: 'Country First',
-      sublabel: 'Defense commitment',
-      description: 'Deep and genuine commitment to national defense. Patriots building for patriots.',
+      label: 'Defense First',
+      sublabel: 'National Security',
+      description: 'Deep commitment to national defense. Mission critical.',
       icon: (
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
           <path d="M20 5L7 12V20C7 28 13 34 20 37C27 34 33 28 33 20V12L20 5Z" stroke="currentColor" strokeWidth="2" />
@@ -100,12 +109,33 @@ export const WhyNodaSection = () => {
     },
   ];
 
+  // Heading words for hero-style animation
+  const headingWords = ['WHY', 'NODA AI'];
+  
   return (
     <section className="why-noda-section scroll-section" data-waypoint-label="WHY NODA">
       <div className="why-noda-container">
-        <div className="section-header-minimal">
-          <h2>Why NODA AI</h2>
-        </div>
+        <h1 ref={headingRef} className={`why-noda-heading hero-reveal ${animationTriggered ? 'animate' : ''}`}>
+          {headingWords.map((word, wordIndex) => {
+            const charDelay = wordIndex === 0 ? 0 : 'WHY'.length * 50 + 100; // Gap between words
+            return (
+              <span key={wordIndex} className="word">
+                {word.split('').map((char, charIndex) => (
+                  <span 
+                    key={charIndex} 
+                    className="char"
+                    style={{
+                      animationDelay: animationTriggered ? `${charDelay + charIndex * 50}ms` : '0ms',
+                      display: char === ' ' ? 'inline' : 'inline-block',
+                    }}
+                  >
+                    {char === ' ' ? '\u00A0' : char}
+                  </span>
+                ))}
+              </span>
+            );
+          })}
+        </h1>
 
         <div className="floating-cards-grid">
           {values.map((value, i) => (

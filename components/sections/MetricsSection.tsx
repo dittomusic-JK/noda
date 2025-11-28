@@ -79,11 +79,18 @@ export const MetricsSection = () => {
           min-height: 100vh;
           display: flex;
           align-items: center;
+          background: linear-gradient(
+            180deg,
+            #1A2820 0%,
+            #1E3028 50%,
+            #1A2820 100%
+          );
         }
 
         .metric-card {
-          background: linear-gradient(135deg, rgba(15, 26, 21, 0.9), rgba(10, 20, 16, 0.9));
-          border: 1px solid rgba(83, 254, 170, 0.2);
+          background: linear-gradient(135deg, rgba(30, 48, 40, 0.6), rgba(20, 35, 28, 0.6));
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(83, 254, 170, 0.3);
           border-radius: 16px;
           padding: 32px 24px;
           text-align: center;
