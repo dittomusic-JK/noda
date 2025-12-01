@@ -121,14 +121,21 @@
   }
 }
 
-/* Hide default cursor */
-* {
+/* Hide default cursor - only on pages with tactical cursor */
+.tactical-page * {
   cursor: none !important;
 }
 
 /* Allow cursor on inputs */
-input, textarea, select {
+.tactical-page input, 
+.tactical-page textarea, 
+.tactical-page select {
   cursor: text !important;
+}
+
+.tactical-page a,
+.tactical-page button {
+  cursor: none !important;
 }
 
 /* Center dot */

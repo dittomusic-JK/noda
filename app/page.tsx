@@ -17,7 +17,7 @@ export default function TacticalHomePage() {
   }, []);
 
   return (
-    <>
+    <div className="tactical-page">
       {/* Tactical overlays */}
       <TacticalCursor />
       <TacticalGrid />
@@ -52,6 +52,6 @@ export default function TacticalHomePage() {
         
         <div className="spacer" style={{ height: '30vh' }} />
       </main>
-    </>
+    </div>
   );
 }
