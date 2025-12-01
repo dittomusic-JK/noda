@@ -227,45 +227,39 @@
   transform: translateX(6px);
 }
 
-/* Minimal credentials */
+/* Credentials with logos */
 .hero-credentials {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .credential-label {
   font-family: var(--font-mono-rogient);
   font-size: 10px;
   font-weight: 400;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.15em;
+  color: var(--cyan-bright);
   text-transform: uppercase;
+  opacity: 0.8;
 }
 
-.credential-logos-minimal {
+.credential-logos {
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: flex-start;
+  gap: 28px;
 }
 
-.credential-item {
-  font-family: var(--font-mono-rogient);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-  transition: color 0.3s ease;
+.credential-logo {
+  height: 24px;
+  width: auto;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
 }
 
-.credential-item:hover {
-  color: var(--cyan-bright);
-}
-
-.credential-divider {
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.2);
+.credential-logo:hover {
+  opacity: 0.9;
 }
 
 /* Scroll indicator - centered bottom */

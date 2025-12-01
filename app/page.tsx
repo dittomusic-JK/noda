@@ -9,6 +9,7 @@ import { HeroTransition } from '@/components/sections/HeroTransition';
 import { ColorTransition } from '@/components/sections/ColorTransition';
 import { WhyNodaSection } from '@/components/sections/WhyNodaSection';
 import { DroneJourneySection } from '@/components/sections/DroneJourneySection';
+import { StatsSection } from '@/components/sections/StatsSection';
 import { initScrollAnimations } from '@/lib/animations';
 
 export default function TacticalHomePage() {
@@ -32,6 +33,9 @@ export default function TacticalHomePage() {
         {/* 3D Drone Journey - capabilities with scroll-driven animation */}
         <DroneJourneySection />
         
+        {/* By The Numbers - Stats */}
+        <StatsSection />
+        
         {/* Dark-to-light transition zone */}
         <ColorTransition />
         
@@ -40,17 +44,17 @@ export default function TacticalHomePage() {
         {/* Final CTA section */}
         <section className="final-cta-section">
           <div className="final-cta-wrapper">
-            <div className="cta-tag">[MISSION READY]</div>
-            <h2>Deploy Now</h2>
-            <p>Coordinated autonomous operations for defense missions.</p>
+            <div className="cta-tag">[DEPLOY THE ORCHESTRATOR]</div>
+            <h2>See It In Action</h2>
+            <p>Vendor-agnostic orchestration for unmanned systems. Integrates in under 30 minutes.</p>
             <div className="cta-buttons">
-              <a href="/demo" className="btn btn-primary">Request Demo</a>
-              <a href="/use-cases" className="btn btn-secondary">View Use Cases</a>
+              <a href="/demo" className="btn btn-primary">Book Demo</a>
+              <a href="/contact" className="btn btn-secondary">Contact Us</a>
             </div>
           </div>
         </section>
         
-        <div className="spacer" style={{ height: '30vh' }} />
+        <div className="spacer" style={{ height: '20vh' }} />
       </main>
     </div>
   );

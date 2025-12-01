@@ -23,7 +23,8 @@ export function Rover({
   rotationY = 0,
 }: Props) {
   const groupRef = useRef<THREE.Group>(null);
-  const { scene } = useGLTF('/Drone_3d_models/rover_optimized.glb');
+  // Note: robot_dog_optimized.glb is actually the wheeled rover model
+  const { scene } = useGLTF('/Drone_3d_models/robot_dog_optimized.glb');
   
   const clonedScene = useMemo(() => {
     const clone = scene.clone();

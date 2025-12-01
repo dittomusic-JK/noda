@@ -12,6 +12,7 @@ interface Props {
   hover?: boolean;
   highlight?: boolean;
   rotationY?: number; // Additional Y rotation from scroll
+  rotationZ?: number; // Additional Z rotation (banking)
 }
 
 const HOLO_COLOR = new THREE.Color('#00ffe5');
@@ -23,6 +24,7 @@ export function FixedWingDrone({
   hover = false,
   highlight = false,
   rotationY = 0,
+  rotationZ = 0,
 }: Props) {
   const groupRef = useRef<THREE.Group>(null);
   const { scene } = useGLTF('/Drone_3d_models/fixed_wing_drone_optimized.glb');
@@ -80,7 +82,7 @@ export function FixedWingDrone({
   const finalRotation: [number, number, number] = [
     rotation[0],
     rotation[1] + rotationY,
-    rotation[2],
+    rotation[2] + rotationZ,
   ];
 
   return (

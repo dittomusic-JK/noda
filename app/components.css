@@ -139,6 +139,120 @@
   }
 }
 
+/* ================================================
+   Stats Section - By The Numbers
+   ================================================ */
+.stats-section {
+  position: relative;
+  padding: clamp(80px, 12vh, 120px) clamp(40px, 8vw, 120px);
+  background: #0A1410;
+  z-index: 2;
+}
+
+.stats-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stats-header {
+  margin-bottom: clamp(48px, 6vh, 64px);
+}
+
+.stats-label {
+  display: block;
+  font-family: var(--font-mono-rogient);
+  font-size: 10px;
+  color: var(--cyan-bright);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.stats-title {
+  font-family: var(--font-michroma);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 400;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.stat-card {
+  position: relative;
+  padding: clamp(24px, 3vw, 32px);
+  background: rgba(83, 254, 170, 0.03);
+  border: 1px solid rgba(83, 254, 170, 0.15);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--cyan-bright);
+  transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.stat-card.visible::before {
+  width: 60px;
+}
+
+.stat-card:hover {
+  background: rgba(83, 254, 170, 0.06);
+  border-color: rgba(83, 254, 170, 0.3);
+  transform: translateY(-4px);
+}
+
+.stat-value {
+  font-family: var(--font-michroma);
+  font-size: clamp(56px, 7vw, 80px);
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-unit {
+  font-family: var(--font-mono-rogient);
+  font-size: clamp(14px, 1.5vw, 18px);
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.stat-description {
+  font-size: clamp(12px, 1.2vw, 14px);
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.4;
+  text-transform: capitalize;
+}
+
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-value {
+    font-size: 48px;
+  }
+}
+
 /* Final CTA Section */
 .final-cta-section {
   position: relative;

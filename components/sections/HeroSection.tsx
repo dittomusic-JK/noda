@@ -68,10 +68,12 @@ export const HeroSection = () => {
       {/* Main content - Left aligned */}
       <div className="hero-content-immersive">
         <h1 className="hero-headline-massive hero-reveal">
-          {['AUTONOMOUS', 'ORCHESTRATION', 'PLATFORM'].map((word, wordIndex) => {
-            const charDelay = wordIndex === 0 ? 0 : 
-                            wordIndex === 1 ? 'AUTONOMOUS'.length * 50 :
-                            ('AUTONOMOUS'.length + 'ORCHESTRATION'.length) * 50;
+          {['BUILDING THE', 'MASTER', 'ORCHESTRATOR'].map((word, wordIndex) => {
+            // Calculate delay based on previous words
+            let charDelay = 0;
+            if (wordIndex === 1) charDelay = 'BUILDING THE'.length * 50;
+            if (wordIndex === 2) charDelay = ('BUILDING THE'.length + 'MASTER'.length) * 50;
+            
             return (
               <span key={wordIndex} className="word">
                 {word.split('').map((char, charIndex) => (
@@ -79,10 +81,11 @@ export const HeroSection = () => {
                     key={charIndex} 
                     className="char"
                     style={{
-                      animationDelay: `${charDelay + charIndex * 50}ms`
+                      animationDelay: `${charDelay + charIndex * 50}ms`,
+                      display: char === ' ' ? 'inline' : 'inline-block'
                     }}
                   >
-                    {char}
+                    {char === ' ' ? '\u00A0' : char}
                   </span>
                 ))}
               </span>
@@ -91,7 +94,8 @@ export const HeroSection = () => {
         </h1>
         
         <p className="hero-subtitle-minimal">
-          Command and control software for multi-agent systems
+          The world builds better drones—the chess pieces.<br />
+          We&apos;re building the best Chess Player.
         </p>
 
         <div className="hero-actions" data-aos="fade-up" data-aos-delay="300">
@@ -103,15 +107,13 @@ export const HeroSection = () => {
           </a>
         </div>
 
-        {/* Minimal credentials */}
+        {/* Credentials with logos */}
         <div className="hero-credentials" data-aos="fade-up" data-aos-delay="400">
-          <span className="credential-label">BUILT BY VETERANS FROM</span>
-          <div className="credential-logos-minimal">
-            <span className="credential-item">NASA</span>
-            <span className="credential-divider">·</span>
-            <span className="credential-item">MIT</span>
-            <span className="credential-divider">·</span>
-            <span className="credential-item">DARPA</span>
+          <span className="credential-label">PATRIOTS BUILDING FOR PATRIOTS</span>
+          <div className="credential-logos">
+            <img src="/nasa-logo.svg" alt="NASA" className="credential-logo" />
+            <img src="/MIT_logo.svg" alt="MIT" className="credential-logo" />
+            <img src="/DARPA_logo.png" alt="DARPA" className="credential-logo" />
           </div>
         </div>
       </div>

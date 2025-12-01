@@ -61,9 +61,9 @@ export const WhyNodaSection = () => {
 
   const values = [
     {
-      label: 'Built by Veterans',
-      sublabel: 'Scientists & AI Practitioners',
-      description: 'NASA. MIT. DARPA. GTRI. Patriots building for patriots.',
+      label: 'Patriots Building',
+      sublabel: 'For Patriots',
+      description: 'Veterans from NASA, MIT, and DARPA. American-made defense technology.',
       icon: (
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
           <path d="M20 5L35 15V25L20 35L5 25V15L20 5Z" stroke="currentColor" strokeWidth="2" />
